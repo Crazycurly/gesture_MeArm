@@ -32,7 +32,7 @@ pip install -r requirements.txt
 ```
 
 ## Set up webcam
- you can use the default webcam or an android phone as a webcam through [Droidcam](https://play.google.com/store/apps/details?id=com.dev47apps.droidcam) app.
+ you can use the normal webcam or an android phone as a webcam through [Droidcam](https://play.google.com/store/apps/details?id=com.dev47apps.droidcam) app.
 
  change the cam_source in the code.
  ```python
