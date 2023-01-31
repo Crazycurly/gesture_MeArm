@@ -4,8 +4,11 @@ import mediapipe as mp
 
 # config
 write_video = True
+debug = True
 cam_source = "http://192.168.1.100:4747/video" # 0,1 for usb cam, "http://192.168.1.165:4747/video" for webcam
-ser = serial.Serial('COM4', 115200)
+
+if not debug:
+    ser = serial.Serial('COM4', 115200)
 
 x_min = 0
 x_mid = 75
@@ -119,7 +122,8 @@ with mp_hands.Hands(model_complexity=0, min_detection_confidence=0.5, min_tracki
                 if servo_angle != prev_servo_angle:
                     print("Servo angle: ", servo_angle)
                     prev_servo_angle = servo_angle
-                    ser.write(bytearray(servo_angle))
+                    if not debug:
+                        ser.write(bytearray(servo_angle))
             else:
                 print("More than one hand detected")
             for hand_landmarks in results.multi_hand_landmarks:
